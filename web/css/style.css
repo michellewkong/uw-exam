@@ -1,6 +1,10 @@
 
 #main-wrapper{width:926px; margin:0 auto; padding:0px;}
 
+body {
+	font-family:"Century Gothic", "Times New Roman", Times, serif;
+}
+
 #banner{width:806px; float:left; background:url(../images/banner.jpg) top no-repeat; height:119px; font-family:Georgia, "Times New Roman", Times, serif; font-size:40px; color:#fff; padding:80px 0px 0px 120px;}
 
 #search-container {
@@ -10,7 +14,6 @@
 	margin-bottom: 60px;
 }
 #search {
-	
 	width: 100%;
 	margin: auto;
 	display: block;
@@ -19,6 +22,7 @@
 	border-radius: 0;
 }
 
+<<<<<<< Updated upstream
 .ui-autocomplete {
 	max-height: 400px;
 	overflow-y: auto;
@@ -48,3 +52,50 @@ ul li:first-child {
 	font-weight: bold!important;
 	font-size: 1.6em!important;
 }
+=======
+table.list-element {
+	float:left;
+	width:100%;
+}
+
+.datagrid table {
+	border-collapse:collapse;
+	width:100%;
+	margin-bottom:10px;
+    border-spacing: 0;
+
+}
+.datagrid table, th {
+	border:1px solid #A3A3A3;
+	padding:7px;
+}
+.datagrid th {
+	background-color:#E6E6E6;
+}
+.datagrid td {
+	padding:5px;
+	height:10px;
+}
+.datagrid p {
+	padding:0px;
+	margin: 0px;
+}
+
+p.cname {
+float:left;font-weight:bold;
+font-size:20px;
+}
+p.ctitle {
+float:left;padding-left:5px;font-weight:normal;color:#7A7A7A;
+}
+
+/* .datagrid table { border-collapse: collapse; text-align: left; width: 100%; padding-bottom:10px; } 
+.datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+.datagrid table td, .datagrid table th { padding: 5px 5px; }
+.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 1px solid #0070A8; } 
+.datagrid table thead th:first-child { border: none; }
+.datagrid table tbody td { color: #00557F; border-left: 1px solid #E1EEF4;font-size: 12px;font-weight: normal; }
+.datagrid table tbody .alt td { background: #E1EEf4; color: #00557F; }
+.datagrid table tbody td:first-child { border-left: none; }
+.datagrid table tbody tr:last-child td { border-bottom: none; } */
+>>>>>>> Stashed changes

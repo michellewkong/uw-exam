@@ -33,14 +33,14 @@ function getCourseDetails( index ) {
 console.log(index);
 	var thisCourse =  courseData[index].course.split(" ");
 	$.getJSON("https://api.uwaterloo.ca/v2/courses/" + thisCourse[0] + "/" + thisCourse[1] + ".json?key=211902c1630ca71d306f1b40daa5de90",
-        function (d) {
-          if (d.meta.status === 200) {
-			courseInfo = d.data;
-			addToList( index );
-          } else {
-            console.log("Failed to read course data." + JSON.stringify(d.meta));
-          }
-        });
+		function (d) {
+			if (d.meta.status === 200) {
+				courseInfo = d.data;
+				addToList( index );
+			} else {
+				console.log("Failed to read course data." + JSON.stringify(d.meta));
+			}
+		});
 }
 
 function addToList( index ) {
@@ -51,6 +51,7 @@ function addToList( index ) {
 	var location = courseData[index].location; 
 	var ctitle = courseInfo.title;
 	
+<<<<<<< Updated upstream
 	var msgContainer = document.createElement('div');
 	msgContainer.id = 'xyz';             // No setAttribute required
 	msgContainer.className = 'someClass' // No setAttribute required, note it's "className" to avoid conflict with JavaScript reserved word
@@ -74,6 +75,34 @@ function addToList( index ) {
     };
 
     jsonCourses.push(resource);
+=======
+    // Create table.
+    var table = document.createElement('table');
+	//table.className = 'list-element';
+    // Insert New Row for table at index '0'.
+    var row1 = table.insertRow(0);
+    // Insert New Column for Row1 at index '0'.
+    row1.innerHTML = '<tr><th><p class="cname">'+cname+'</p><p class="ctitle">'+ctitle+'</p></th></tr>';
+	
+
+    var row2 = table.insertRow(1);
+    var row2col1 = row2.insertCell(0);
+	var d = $.datepicker.parseDate("yy-mm-dd", date);
+	var datestrInNewFormat = $.datepicker.formatDate( "DD, MM dd, yy", d);
+    row2col1.innerHTML = '<p>'+datestrInNewFormat+'</p>';
+	
+    var row3 = table.insertRow(2);
+    var row3col1 = row3.insertCell(0);
+    row3col1.innerHTML = '<p>'+start_time+' - '+end_time+'</p>';
+	
+    var row4 = table.insertRow(3);
+    var row4col1 = row4.insertCell(0);
+    row4col1.innerHTML = '<p>'+location+'</p>';
+	
+    // Append Table into div.
+    var div = document.getElementById('list');
+    div.appendChild(table);
+>>>>>>> Stashed changes
 }
 
 function parseDate(date, time) {
