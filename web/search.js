@@ -1,5 +1,5 @@
 var courseData = {};
-var courseList = {};
+var courseList = [];
 
 load = function () {
       $.getJSON("https://api.uwaterloo.ca/v2/terms/1139/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
@@ -12,7 +12,7 @@ load = function () {
             	courseData[i].start_time=d.data[i].sections[0].start_time;
             	courseData[i].end_time=d.data[i].sections[0].end_time;
             	courseData[i].location=d.data[i].sections[0].location;
-				courseList[i] = d.data[i].course;
+				courseList.push(d.data[i].course);
             }
 			console.log(courseList);
           } else {
