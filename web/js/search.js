@@ -58,7 +58,8 @@ function addToList( index ) {
     var row1 = table.insertRow(0);
     // Insert New Column for Row1 at index '0'.
     row1.innerHTML = '<tr><th><p class="cname">'+cname+'</p><p class="ctitle">'+ctitle+'</p></th></tr>';
-	
+	var exam = true;
+
 	if (date !== '') {
 		var row2 = table.insertRow(1);
 		var row2col1 = row2.insertCell(0);
@@ -77,6 +78,7 @@ function addToList( index ) {
 		var row2 = table.insertRow(1);
 		var row2col1 = row2.insertCell(0);
 		row2col1.innerHTML = '<p>No exam</p>';
+		exam = false;
 	}
 	
     // Append Table into div.
@@ -95,7 +97,9 @@ function addToList( index ) {
       }
     };
 
-    jsonCourses.push(resource);
+    if (exam ) {
+    	jsonCourses.push(resource);
+    }
 }
 
 function parseDate(date, time) {

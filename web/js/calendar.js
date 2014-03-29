@@ -43,6 +43,8 @@ function makeApiCall(){
       request.execute(function(resp) {
         console.log(resp);
         if (resp.id){
+          var domain = "http://calendar.google.com";
+          window.open(domain);
         }
       });
     });
