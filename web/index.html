@@ -25,7 +25,13 @@
 										top: top + 340 + "px" });
 
 			},
-			source: courseList,
+			source: function(req, response) { 
+				var re = $.ui.autocomplete.escapeRegex(req.term); 
+				var matcher = new RegExp( "^" + re, "i" ); 
+				response($.grep( courseList, function(item){ 
+					return matcher.test(item.label); 
+				})); 
+			},
 			select: function ( event, ui ) {
 
 				var value = ui.item.value;
