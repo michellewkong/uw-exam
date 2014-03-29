@@ -20,6 +20,7 @@ function handleAuthResult(authResult) {
   } else {
     authorizeButton.style.visibility = '';
     authorizeButton.onclick = handleAuthClick;
+    alert (authResult.error);
   }
 }
 
@@ -31,6 +32,7 @@ function handleAuthClick(event) {
  }
     
 function makeApiCall(){
+  alert("make api call");
     gapi.client.load('calendar', 'v3', function() {
       console.log(jsonCourses);
       jsonCourses.forEach(function(entry){

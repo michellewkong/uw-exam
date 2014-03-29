@@ -74,7 +74,7 @@ function parseDate(date, time) {
 	pattern = /AM/;
 	var am = time.match(pattern);
 	
-	if (am == null) {
+	if (am == null && hour != "12") {
 		hour = parseInt(hour) + 12;
 	}
 
@@ -82,6 +82,6 @@ function parseDate(date, time) {
 		hour = "0" + hour;
 	}
 
-	var newdate = date + "T" + hour+ ":" + minute + ":00.000-05:00";
+	var newdate = date + "T" + hour+ ":" + minute + ":00.000-04:00";
 	return newdate;
 }
