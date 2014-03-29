@@ -51,32 +51,7 @@ function addToList( index ) {
 	var location = courseData[index].location; 
 	var ctitle = courseInfo.title;
 	
-<<<<<<< Updated upstream
-	var msgContainer = document.createElement('div');
-	msgContainer.id = 'xyz';             // No setAttribute required
-	msgContainer.className = 'someClass' // No setAttribute required, note it's "className" to avoid conflict with JavaScript reserved word
-	if (date === '') {
-		msgContainer.appendChild(document.createTextNode(cname + " " + ctitle + " No exam"));
-	} else {
-		msgContainer.appendChild(document.createTextNode(cname + " " + date + " " + start_time + " " + end_time + " " + location + " " + ctitle));
-	}
-	document.getElementById( "list" ).appendChild(msgContainer);
-	
-	// Create Json object for Google Calendar
-	var resource = {
-      "summary": ctitle + " Exam",
-      "location": location,
-      "start": {
-          "dateTime": parseDate(date, start_time)
-      },
-      "end": {
-        "dateTime": parseDate(date, end_time)
-      }
-    };
-
-    jsonCourses.push(resource);
-=======
-    // Create table.
+	// Create table.
     var table = document.createElement('table');
 	//table.className = 'list-element';
     // Insert New Row for table at index '0'.
@@ -102,7 +77,20 @@ function addToList( index ) {
     // Append Table into div.
     var div = document.getElementById('list');
     div.appendChild(table);
->>>>>>> Stashed changes
+
+	// Create Json object for Google Calendar
+	var resource = {
+      "summary": ctitle + " Exam",
+      "location": location,
+      "start": {
+          "dateTime": parseDate(date, start_time)
+      },
+      "end": {
+        "dateTime": parseDate(date, end_time)
+      }
+    };
+
+    jsonCourses.push(resource);
 }
 
 function parseDate(date, time) {
