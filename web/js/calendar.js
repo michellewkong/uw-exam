@@ -9,7 +9,7 @@ function handleClientLoad() {
 }
           
 function checkAuth() {
-  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+  gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
 }
       
 function handleAuthResult(authResult) {
@@ -18,7 +18,8 @@ function handleAuthResult(authResult) {
     //authorizeButton.style.visibility = 'hidden';
     makeApiCall();
   } else {
-    handleAuthClick();
+    alert ("second time?");
+    //handleAuthClick();
     authorizeButton.style.visibility = '';
     authorizeButton.onclick = handleAuthClick;
   }
