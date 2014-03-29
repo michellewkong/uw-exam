@@ -21,7 +21,6 @@
 			open: function() {
 				var position = $("#results").position(),
 					left = position.left, top = position.top;
-				console.log(left, top);
 				$("#results > ul").css({left: left + "px",
 										top: top + 340 + "px" });
 
@@ -30,7 +29,13 @@
 			select: function ( event, ui ) {
 
 				var value = ui.item.value;
-				var index = $.inArray(ui.item.value, courseList);
+				var index;
+				for (var i = 0; i < courseList.length; i++) {
+					if (courseList[i].value === ui.item.value) {
+						index = i;
+						break;
+					}
+				}
 				
 				//console.log(courseData[index].date);
 				//console.log(value);
@@ -39,7 +44,19 @@
 				
 				
 			}
-		})
+		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+			var date;
+			if (item.date === '') {
+				date = 'No exam';
+			} else {
+				var d = $.datepicker.parseDate("yy-mm-dd", item.date); 
+				var datestrInNewFormat = $.datepicker.formatDate( "DD, MM dd, yy", d);
+				date = datestrInNewFormat;
+			}
+			  return $( "<li>" )
+				.append( '<a><span style="width:40%;float:left;">' + item.label + '</span><small style="width:60%;color:#aaa;">' + date + '</small></a>' )
+				.appendTo( ul );
+			};
 	});
 	
 	</script>

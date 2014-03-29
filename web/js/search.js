@@ -14,7 +14,11 @@ function load() {
 					courseData[i].start_time=d.data[i].sections[0].start_time;
 					courseData[i].end_time=d.data[i].sections[0].end_time;
 					courseData[i].location=d.data[i].sections[0].location;
-					courseList.push(d.data[i].course);
+					courseList.push({
+						value: d.data[i].course, 
+						label: d.data[i].course,
+						date: d.data[i].sections[0].date
+					});
 			}
 			console.log(courseList);
 			} else {
@@ -24,6 +28,7 @@ function load() {
 }
 	
 function getCourseDetails( index ) {
+console.log(index);
 	var thisCourse =  courseData[index].course.split(" ");
 	$.getJSON("https://api.uwaterloo.ca/v2/courses/" + thisCourse[0] + "/" + thisCourse[1] + ".json?key=211902c1630ca71d306f1b40daa5de90",
         function (d) {
