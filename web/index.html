@@ -15,9 +15,20 @@
 	<script src="js/calendar.js" type="text/javascript"></script>
 
 	<script>
+	
+
 
 	$(function() {
 		$( "#search" ).autocomplete({
+			appendTo: "#results",
+			open: function() {
+				var position = $("#results").position(),
+					left = position.left, top = position.top;
+				console.log(left, top);
+				$("#results > ul").css({left: left + "px",
+										top: top + 340 + "px" });
+
+			},
 			source: courseList,
 			select: function ( event, ui ) {
 
@@ -31,7 +42,7 @@
 				
 				
 			}
-		});
+		})
 	});
 	
 	</script>
@@ -47,7 +58,8 @@
 		<div id="search-container">
 			<input id="search" type="search" placeholder="eg: CS241, GENE 411, CO 487,..." value="">
 		</div>
-		
+
+		<div id="results"></div>
 		<div id="list">
 		</div>
 		<button id="authorize-button">Authorize</button>	

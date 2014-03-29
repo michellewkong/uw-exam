@@ -18,3 +18,33 @@
 	font-size: 40px;
 	border-radius: 0;
 }
+
+.ui-autocomplete {
+	max-height: 400px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
+
+.ui-corner-all > li  > a {
+	line-height: 1.8!important;
+	font-size: 1.5em!important;
+}
+
+ul li { 
+	border-top: 1px #bbb solid; 
+	padding: 2em 0; 
+}
+
+ul li:first-child { 
+	border-top: none; 
+	padding-top: 0; 
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus
+{
+    background: none!important;
+	background-color: #eee!important;
+	font-weight: bold!important;
+	font-size: 1.7em!important;
+}
