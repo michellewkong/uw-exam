@@ -59,20 +59,25 @@ function addToList( index ) {
     // Insert New Column for Row1 at index '0'.
     row1.innerHTML = '<tr><th><p class="cname">'+cname+'</p><p class="ctitle">'+ctitle+'</p></th></tr>';
 	
-
-    var row2 = table.insertRow(1);
-    var row2col1 = row2.insertCell(0);
-	var d = $.datepicker.parseDate("yy-mm-dd", date);
-	var datestrInNewFormat = $.datepicker.formatDate( "DD, MM dd, yy", d);
-    row2col1.innerHTML = '<p>'+datestrInNewFormat+'</p>';
-	
-    var row3 = table.insertRow(2);
-    var row3col1 = row3.insertCell(0);
-    row3col1.innerHTML = '<p>'+start_time+' - '+end_time+'</p>';
-	
-    var row4 = table.insertRow(3);
-    var row4col1 = row4.insertCell(0);
-    row4col1.innerHTML = '<p>'+location+'</p>';
+	if (date !== '') {
+		var row2 = table.insertRow(1);
+		var row2col1 = row2.insertCell(0);
+		var d = $.datepicker.parseDate("yy-mm-dd", date);
+		var datestrInNewFormat = $.datepicker.formatDate( "DD, MM dd, yy", d);
+		row2col1.innerHTML = '<p>'+datestrInNewFormat+'</p>';
+		
+		var row3 = table.insertRow(2);
+		var row3col1 = row3.insertCell(0);
+		row3col1.innerHTML = '<p>'+start_time+' - '+end_time+'</p>';
+		
+		var row4 = table.insertRow(3);
+		var row4col1 = row4.insertCell(0);
+		row4col1.innerHTML = '<p>'+location+'</p>';
+	} else {
+		var row2 = table.insertRow(1);
+		var row2col1 = row2.insertCell(0);
+		row2col1.innerHTML = '<p>No exam</p>';
+	}
 	
     // Append Table into div.
     var div = document.getElementById('list');
