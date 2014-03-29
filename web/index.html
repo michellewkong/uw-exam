@@ -24,8 +24,19 @@
 				
 				var value = ui.item.value;
 				var index = $.inArray(ui.item.value, courseList);
+				var date = courseData[index].date;
+				var start_time = courseData[index].start_time;
+				var end_time = courseData[index].end_time;
+				var location = courseData[index].location;
+				
 				console.log(courseData[index].date);
 				console.log(value);
+				
+				var msgContainer = document.createElement('div');
+				msgContainer.id = 'xyz';             // No setAttribute required
+				msgContainer.className = 'someClass' // No setAttribute required, note it's "className" to avoid conflict with JavaScript reserved word
+				msgContainer.appendChild(document.createTextNode(value + " " + date + " " + start_time + " " + end_time + " " + location));
+				document.getElementById( "list" ).appendChild(msgContainer);
 			}
 		});
 	});
@@ -49,7 +60,9 @@
 		<div id="search-container">
 			<input id="search" type="search" placeholder="eg: CS241, GENE 411, CO 487,..." value="">
 		</div>
-
+		
+		<div id="list">
+		</div>
 		<button id="authorize-button">Authorize</button>	
 	</div>
 </body>
