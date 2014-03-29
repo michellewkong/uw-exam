@@ -8,6 +8,8 @@
 	<meta name="description" content="Description of your site goes here">
 	<meta name="keywords" content="keyword1, keyword2, keyword3">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<script src="js/calendar.js" type="text/javascript"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -83,7 +85,11 @@
 		<div id="list" class="datagrid" style="float:left;width:100%;">
 
 		</div>
-		<button id="authorize-button" onclick="handleClientLoad()">Add to Calendar</button>	
+			<button id="authorize-button" class="btn-primary has-spinner" onclick="handleClientLoad()">
+				<span class="spinner"><i class="icon-spin icon-refresh">
+					Add to Calendar
+				</i></span>
+			</button>
 	</div>
 </body>
 </html>
