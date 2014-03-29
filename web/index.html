@@ -35,8 +35,8 @@
 				var value = ui.item.value;
 				var index = $.inArray(ui.item.value, courseList);
 				
-				console.log(courseData[index].date);
-				console.log(value);
+				//console.log(courseData[index].date);
+				//console.log(value);
 				
 				getCourseDetails( index );
 				
@@ -46,7 +46,7 @@
 	});
 	
 	</script>
-	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad">
+	<script src="https://apis.google.com/js/client.js">
 	</script>
 </head>
 
@@ -62,7 +62,7 @@
 		<div id="results"></div>
 		<div id="list">
 		</div>
-		<button id="authorize-button">Authorize</button>	
+		<button id="authorize-button" onclick="handleClientLoad()">Add to Calendar</button>	
 	</div>
 </body>
 

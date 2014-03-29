@@ -1,6 +1,7 @@
 var courseData = {};
 var courseList = [];
 var courseInfo = {};
+var jsonCourses = [];
 
 function load() {
 	$.getJSON("https://api.uwaterloo.ca/v2/terms/1141/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
@@ -48,4 +49,39 @@ function addToList( index ) {
 	msgContainer.className = 'someClass' // No setAttribute required, note it's "className" to avoid conflict with JavaScript reserved word
 	msgContainer.appendChild(document.createTextNode(cname + " " + date + " " + start_time + " " + end_time + " " + location + " " + ctitle));
 	document.getElementById( "list" ).appendChild(msgContainer);
+	
+	// Create Json object for Google Calendar
+	var resource = {
+      "summary": ctitle + " Exam",
+      "location": location,
+      "start": {
+          "dateTime": parseDate(date, start_time)
+      },
+      "end": {
+        "dateTime": parseDate(date, end_time)
+      }
+    };
+
+    jsonCourses.push(resource);
+}
+
+function parseDate(date, time) {
+	var pattern = /^.?.(?=:)/;
+	var hour = time.match(pattern);
+
+	pattern = /..(?= [AP]M)/;
+	var minute = time.match(pattern);
+	pattern = /AM/;
+	var am = time.match(pattern);
+	
+	if (am == null) {
+		hour = parseInt(hour) + 12;
+	}
+
+	if (hour < 10) {
+		hour = "0" + hour;
+	}
+
+	var newdate = date + "T" + hour+ ":" + minute + ":00.000-05:00";
+	return newdate;
 }

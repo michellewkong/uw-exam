@@ -1,5 +1,5 @@
 var clientId = '469234392713-simdmu4rn98f6jqf27ouucef249s696o.apps.googleusercontent.com';
-var scopes = 'https://www.googleapis.com/auth/calendar.readonly';
+var scopes = 'https://www.googleapis.com/auth/calendar';
 var apiKey = 'AIzaSyDr04aEIjqmeICdtpaT5dn2Uvn157u18j0';
     
 function handleClientLoad() {
@@ -31,28 +31,21 @@ function handleAuthClick(event) {
  }
     
 function makeApiCall(){
-    var resource = {
-      "summary": "Appointment",
-      "location": "here",
-      "start": {
-          "dateTime": "2014-03-30T10:00:00.000-05:00"
-      },
-      "end": {
-        "dateTime": "2014-03-30T10:44:00.000-05:00"
-      }
-
-    };
     gapi.client.load('calendar', 'v3', function() {
-    var request = gapi.client.calendar.events.insert({
-      'calendarId': 'primary',
-      'resource': resource
-    });
+      console.log(jsonCourses);
+      jsonCourses.forEach(function(entry){
+        
+      var request = gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': entry
+      });
           
-    request.execute(function(resp) {
-      console.log(resp);
-      if (resp.id){
-        alert("event added :)")
-      }
+      request.execute(function(resp) {
+        console.log(resp);
+        if (resp.id){
+          alert("event added :)")
+        }
+      });
     });
   });
 }
