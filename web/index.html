@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="js/calendar.js"></script>
 
 	<script>
 	$(function() {
@@ -38,8 +39,19 @@
 		<div id="search-container">
 			<input id="search" type="search" placeholder="eg: CS241, GENE 411, CO 487,..." value="">
 		</div>
+
+		<button id="authorize-button" >Authorize</button>
 	</div>
 
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad">
+
+		var restRequest = gapi.client.request({
+  			'path': '/calendar/v1',
+  			'params': {'query': 'Google+', 'orderBy': 'best'}
+		});
+
+		restRequest.execute(function(resp) { console.log(resp); });
+	</script>
 </body>
 
 </html>
