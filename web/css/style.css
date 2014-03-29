@@ -1,0 +1,20 @@
+
+#main-wrapper{width:926px; margin:0 auto; padding:0px;}
+
+#banner{width:806px; float:left; background:url(../images/banner.jpg) top no-repeat; height:119px; font-family:Georgia, "Times New Roman", Times, serif; font-size:40px; color:#fff; padding:80px 0px 0px 120px;}
+
+#search-container {
+	float:left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+#search {
+	
+	width: 100%;
+	margin: auto;
+	display: block;
+	height: 60px;
+	font-size: 40px;
+	border-radius: 0;
+}

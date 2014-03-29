@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<script src="search.js"></script>
-    <head>
-		<script>
-			function load() {
-				alert("Page is loaded");
-			}
-		</script>
-	</head>
-	
-	<body onload="load()">
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title goes here</title>
+	<meta name="description" content="Description of your site goes here">
+	<meta name="keywords" content="keyword1, keyword2, keyword3">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+	<script>
+	$(function() {
+	var availableTags = [
+		"ActionScript",
+		"AppleScript",
+		"Asp",
+		"BASIC",
+		"C"
+
+	];
+	$( "#search" ).autocomplete({
+		source: availableTags
+	});
+	});
+	</script>
+</head>
+
+<body>
+
+	<div id="main-wrapper">
+
+		<div id="banner"> UWaterloo Exam Search </div>
+
+		<div id="search-container">
+			<input id="search" type="search" placeholder="eg: CS241, GENE 411, CO 487,..." value="">
+		</div>
+	</div>
+
+</body>
+
 </html>
