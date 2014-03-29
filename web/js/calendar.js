@@ -18,9 +18,9 @@ function handleAuthResult(authResult) {
     //authorizeButton.style.visibility = 'hidden';
     makeApiCall();
   } else {
+    handleAuthClick();
     authorizeButton.style.visibility = '';
     authorizeButton.onclick = handleAuthClick;
-    alert (authResult.error);
   }
 }
 
@@ -32,9 +32,7 @@ function handleAuthClick(event) {
  }
     
 function makeApiCall(){
-  alert("make api call");
     gapi.client.load('calendar', 'v3', function() {
-      console.log(jsonCourses);
       jsonCourses.forEach(function(entry){
         
       var request = gapi.client.calendar.events.insert({
@@ -45,7 +43,6 @@ function makeApiCall(){
       request.execute(function(resp) {
         console.log(resp);
         if (resp.id){
-          alert("event added :)")
         }
       });
     });
