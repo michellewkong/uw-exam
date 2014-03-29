@@ -18,7 +18,15 @@
 
 	$(function() {
 		$( "#search" ).autocomplete({
-			source: courseList
+			source: courseList,
+			select: function ( event, ui ) {
+			
+				
+				var value = ui.item.value;
+				var index = $.inArray(ui.item.value, courseList);
+				console.log(courseData[index].date);
+				console.log(value);
+			}
 		});
 	});
 	
