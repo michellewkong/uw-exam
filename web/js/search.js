@@ -54,7 +54,11 @@ function addToList( index ) {
 	var msgContainer = document.createElement('div');
 	msgContainer.id = 'xyz';             // No setAttribute required
 	msgContainer.className = 'someClass' // No setAttribute required, note it's "className" to avoid conflict with JavaScript reserved word
-	msgContainer.appendChild(document.createTextNode(cname + " " + date + " " + start_time + " " + end_time + " " + location + " " + ctitle));
+	if (date === '') {
+		msgContainer.appendChild(document.createTextNode(cname + " " + ctitle + " No exam"));
+	} else {
+		msgContainer.appendChild(document.createTextNode(cname + " " + date + " " + start_time + " " + end_time + " " + location + " " + ctitle));
+	}
 	document.getElementById( "list" ).appendChild(msgContainer);
 	
 	// Create Json object for Google Calendar
