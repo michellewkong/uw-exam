@@ -22,7 +22,6 @@ function load() {
 						end_time: d.data[i].sections[0].end_time
 					});
 			}
-			console.log(courseList);
 			} else {
 				console.log("Failed to read course data." + JSON.stringify(d.meta));
 			}
@@ -30,7 +29,6 @@ function load() {
 }
 	
 function getCourseDetails( index ) {
-console.log(index);
 	var thisCourse =  courseData[index].course.split(" ");
 	$.getJSON("https://api.uwaterloo.ca/v2/courses/" + thisCourse[0] + "/" + thisCourse[1] + ".json?key=211902c1630ca71d306f1b40daa5de90",
 		function (d) {
@@ -41,6 +39,19 @@ console.log(index);
 				console.log("Failed to read course data." + JSON.stringify(d.meta));
 			}
 		});
+}
+
+function removeElem(o) {
+	var cname = o.parentNode.firstChild.innerHTML;
+	var table = o.parentNode.parentNode.parentNode.parentNode;
+	
+	for(var i=0; i<jsonCourses.length;i++) {
+		if (jsonCourses[i].summary == cname + " Exam") {
+			jsonCourses.splice(i,1);
+		}
+	}
+	
+    table.parentNode.removeChild(table);
 }
 
 function addToList( index ) {
@@ -57,9 +68,10 @@ function addToList( index ) {
     // Insert New Row for table at index '0'.
     var row1 = table.insertRow(0);
     // Insert New Column for Row1 at index '0'.
-    row1.innerHTML = '<tr><th><p class="cname">'+cname+'</p><p class="ctitle">'+ctitle+'</p></th></tr>';
-	var exam = true;
+    row1.innerHTML = '<tr><th><p class="cname">'+cname+'</p><p class="ctitle">'+ctitle+'</p><button type="button" class="close" aria-hidden="true" onclick="removeElem(this);">&times;</button></th></tr>';
 
+	var exam = true;
+	
 	if (date !== '') {
 		var row2 = table.insertRow(1);
 		var row2col1 = row2.insertCell(0);
@@ -87,7 +99,7 @@ function addToList( index ) {
 
 	// Create Json object for Google Calendar
 	var resource = {
-      "summary": ctitle + " Exam",
+      "summary": cname + " Exam",
       "location": location,
       "start": {
           "dateTime": parseDate(date, start_time)
@@ -100,6 +112,9 @@ function addToList( index ) {
     if (exam ) {
     	jsonCourses.push(resource);
     }
+
+	$('#search').val('');
+    jsonCourses.push(resource);
 }
 
 function parseDate(date, time) {

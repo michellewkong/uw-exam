@@ -4,8 +4,8 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Title goes here</title>
-	<meta name="description" content="Description of your site goes here">
+	<title>UWaterloo Exam Search</title>
+	<meta name="description" content="Search for your exams!">
 	<meta name="keywords" content="keyword1, keyword2, keyword3">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="css/ladda.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,6 @@
 				})); 
 			},
 			select: function ( event, ui ) {
-
 				var value = ui.item.value;
 				var index;
 				for (var i = 0; i < courseList.length; i++) {
@@ -45,10 +44,8 @@
 						break;
 					}
 				}
-				
+
 				getCourseDetails( index );
-				
-				
 			}
 		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
 			var date;

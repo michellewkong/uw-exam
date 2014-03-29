@@ -75,7 +75,7 @@ table.list-element {
 	padding:7px;
 }
 .datagrid th {
-	background-color:#E6E6E6;
+	background-color:#EBEBEB;
 }
 .datagrid td {
 	padding:5px;
@@ -93,5 +93,14 @@ p.cname {
 p.ctitle {
 	float:left;padding-left:5px;font-weight:normal;color:#7A7A7A;
 }
-
+button.close {
+	float: right;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity=20);
+	opacity: .2;
+}
 
