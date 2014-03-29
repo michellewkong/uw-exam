@@ -114,7 +114,6 @@ function addToList( index ) {
     }
 
 	$('#search').val('');
-    jsonCourses.push(resource);
 }
 
 function parseDate(date, time) {

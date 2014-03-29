@@ -34,6 +34,7 @@ function handleAuthClick(event) {
     
 function makeApiCall(){
     gapi.client.load('calendar', 'v3', function() {
+      console.log (jsonCourses);
       jsonCourses.forEach(function(entry){
         
       var request = gapi.client.calendar.events.insert({
@@ -44,10 +45,11 @@ function makeApiCall(){
       request.execute(function(resp) {
         console.log(resp);
         if (resp.id){
-          var domain = "http://calendar.google.com";
-          window.open(domain);
         }
       });
     });
   });
+
+      var domain = "http://calendar.google.com";
+      window.open(domain);
 }
