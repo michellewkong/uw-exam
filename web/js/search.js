@@ -17,7 +17,9 @@ function load() {
 					courseList.push({
 						value: d.data[i].course, 
 						label: d.data[i].course,
-						date: d.data[i].sections[0].date
+						date: d.data[i].sections[0].date,
+						start_time: d.data[i].sections[0].start_time,
+						end_time: d.data[i].sections[0].end_time
 					});
 			}
 			console.log(courseList);

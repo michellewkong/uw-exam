@@ -46,15 +46,18 @@
 			}
 		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
 			var date;
+			var time;
 			if (item.date === '') {
 				date = 'No exam';
+				 time = '';
 			} else {
 				var d = $.datepicker.parseDate("yy-mm-dd", item.date); 
 				var datestrInNewFormat = $.datepicker.formatDate( "DD, MM dd, yy", d);
 				date = datestrInNewFormat;
+				time = item.start_time + ' - ' + item.end_time
 			}
 			  return $( "<li>" )
-				.append( '<a><span style="width:40%;float:left;">' + item.label + '</span><small style="width:60%;color:#aaa;">' + date + '</small></a>' )
+				.append( '<a><span style="width:25%;float:left;">' + item.label + '</span><small style="width:45%;color:#aaa;">' + date + '</small><small style="width:30%;float:right;color:#aaa;">' + time + '</small</a>' )
 				.appendTo( ul );
 			};
 	});
