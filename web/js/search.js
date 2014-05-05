@@ -2,11 +2,13 @@ var courseData = {};
 var courseList = [];
 var courseInfo = {};
 var jsonCourses = [];
+var termCode = getTerm();
 
 function load() {
-	$.getJSON("https://api.uwaterloo.ca/v2/terms/1141/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
+	$.getJSON("https://api.uwaterloo.ca/v2/terms/"+ termCode + "/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
 		function (d) {
 			if (d.meta.status === 200) {
+				//$('#search-container :input').removeAttr('disabled');
 				for(var i=0; i<d.data.length;i++) {
 					courseData[i] = {};
 					courseData[i].course=d.data[i].course;
@@ -23,6 +25,8 @@ function load() {
 					});
 			}
 			} else {
+				$('#search-container :input').attr('disabled', true);
+				$('#search-container :input').attr('placeholder', 'Exam schedule is not currently available.');
 				console.log("Failed to read course data." + JSON.stringify(d.meta));
 			}
 		});
@@ -133,6 +137,30 @@ function parseDate(date, time) {
 		hour = "0" + hour;
 	}
 
+	// we know we are at waterloo! daylight saving time march-november
+	// so, -4 for winter/spring, -5 for winter
 	var newdate = date + "T" + hour+ ":" + minute + ":00.000-04:00";
 	return newdate;
+}
+
+function getTerm() {
+	var d = new Date();
+	var m = d.getMonth();
+	var y = d.getFullYear() + '';
+	var code;
+
+	if (m<=3) {
+		// winter
+		code = "1" + y.slice(2, 4) + "1";
+	}
+	else if (7>=m>3) {
+		//spring
+		code = "1" + y.slice(2, 4) + "5";
+	}
+	else if(m>7) {
+		//fall
+		code = "1" + y.slice(2, 4) + "9";
+	}
+
+	return code;
 }
