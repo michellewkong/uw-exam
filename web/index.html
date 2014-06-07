@@ -51,7 +51,7 @@
 			var date;
 			var time;
 			if (item.date === '') {
-				date = 'No exam';
+				date = 'Exam not in the current exam schedule.';
 				 time = '';
 			} else {
 				var d = $.datepicker.parseDate("yy-mm-dd", item.date); 
@@ -60,7 +60,7 @@
 				time = item.start_time + ' - ' + item.end_time
 			}
 			  return $( "<li>" )
-				.append( '<a><span style="width:25%;float:left;">' + item.label + '</span><small style="width:45%;color:#aaa;">' + date + '</small><small style="width:30%;float:right;color:#aaa;">' + time + '</small</a>' )
+				.append( '<a><span style="width:28%;float:left;">' + item.label + '</span><small style="width:42%;color:#aaa;">' + date + '</small><small style="width:30%;float:right;color:#aaa;">' + time + '</small</a>' )
 				.appendTo( ul );
 			};
 	});
