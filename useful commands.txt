@@ -1,0 +1,5 @@
+git push heroku master
+git reset --hard
+go to directory uw-exam
+	zerver web
+	view on localhost:5000
