@@ -6,8 +6,7 @@ var jsonCourses = [];
 var termCode = getTerm();
 
 function load() {
-	//$.getJSON("https://api.uwaterloo.ca/v2/terms/"+ termCode + "/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
-		$.getJSON("https://api.uwaterloo.ca/v2/terms/1141/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
+	$.getJSON("https://api.uwaterloo.ca/v2/terms/"+ termCode + "/examschedule.json?key=211902c1630ca71d306f1b40daa5de90",
 		function (d) {
 			if (d.meta.status === 200) {
 				//$('#search-container :input').removeAttr('disabled');
