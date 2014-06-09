@@ -259,7 +259,7 @@ function getTerm() {
 		// winter
 		code = "1" + y.slice(2, 4) + "1";
 	}
-	else if (7>=m>3) {
+	else if (7>=m && m>3) {
 		//spring
 		code = "1" + y.slice(2, 4) + "5";
 	}
